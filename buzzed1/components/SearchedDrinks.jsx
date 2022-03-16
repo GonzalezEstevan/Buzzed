@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, ScrollView, Pressable, Image, View, SafeAreaView, Button } from 'react-native';
 import axios from 'axios'
+import Icon from 'react-native-ico';
+var iconHeight = 40;
+var iconWidth = 40;
 
 const styles = StyleSheet.create({
   tinyLogo: {
@@ -47,6 +50,28 @@ const styles = StyleSheet.create({
       width: 0,
       height: 8,
     },
+  },
+  textContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+  },
+  IconBehave: {
+    padding: 14,
+    alignItems: 'center',
+    borderRadius: 8,
+    padding: 6,
+  },
+  wrapperCustom: {
+    borderRadius: 8,
+    padding: 6,
+    alignItems: 'center'
+  },
+  logBox: {
+    padding: 20,
+    margin: 10,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#f0f0f0',
+    backgroundColor: '#f9f9f9'
   }
 });
 
@@ -64,6 +89,16 @@ var SearchedDrinks = (props) => {
       getById(drinkId)
     }
  }, [drinkId])
+
+ var postDrink = (body) => {
+  axios.post('http://localhost:3000/db/myDrinks', body)
+   .then(response => {
+     console.log('POSTED TO DB')
+   })
+   .catch(err => {
+     console.error(err,'ERROR')
+   })
+}
 
 
   var getById = (drinkId) => {
@@ -135,6 +170,30 @@ var SearchedDrinks = (props) => {
         {clickedDrink.instructions}
       </Text>
       </SafeAreaView>
+      </Pressable>
+      <Pressable style={styles.IconBehave} onPress={() =>
+          {postDrink({
+            id: props.drinkObj.idDrink,
+            name: props.drinkObj.strDrink,
+            pic: props.drinkObj.strDrinkThumb,
+            instructions: clickedDrink.instructions,
+          }
+          )}}
+          style={({ pressed }) => [
+          {
+            backgroundColor: pressed
+              ? 'rgb(210, 230, 255)'
+              : 'white'
+          },
+          styles.wrapperCustom
+        ]}>
+          {({ pressed }) => (
+          <Text style={{fontSize: 20}}>
+            {pressed ? 'Added!' : (
+              <Icon name="add" group="basic" height={iconHeight} width={iconWidth} color={'black'} />
+            )}
+          </Text>
+        )}
       </Pressable>
       </View>
     </View>

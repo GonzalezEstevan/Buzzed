@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, ScrollView, Pressable, Image, View, SafeAreaView } from 'react-native';
-import axios from 'axios';
-import DrinkEntrie from './DrinkEntrie'
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, ScrollView, Pressable, Image, View, SafeAreaView, Button, TouchableWithoutFeedback } from 'react-native';
+import axios from 'axios'
+import Icon from 'react-native-ico';
+
+var iconHeight = 40;
+var iconWidth = 40;
 
 const styles = StyleSheet.create({
   tinyLogo: {
@@ -36,7 +39,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: 20,
-    top: 150
   },
   textContainer: {
     backgroundColor: 'white',
@@ -62,37 +64,36 @@ const styles = StyleSheet.create({
   }
 });
 
-var MyDrinks = () => {
- var [myDrinks, setMyDrinks] = useState([])
-
- useEffect(() => {
-  getDrinks();
-},[]);
-
-var getDrinks = () => {
-  axios.get(`http://localhost:3000/db/myDrinks`)
-    .then(response => {
-      setMyDrinks(response.data.rows)
-    })
-    .catch(err => {
-       console.error(err.message)
-    })
-}
+var DrinkEntrie = (props) => {
 
 
-  return(
+  return (
     <View style={styles.container}>
-      <Text style={{fontSize: 32}}>My Drinks</Text>
-      <SafeAreaView>
-        <ScrollView >
-        {myDrinks.map((drink, idx) => {
-          console.log(drink)
-           return <DrinkEntrie drinkObj={drink} key={idx}/>
-        })}
-        </ScrollView>
-      </SafeAreaView>
+      <View style={styles.cardContainer}>
+        <View style={styles.drinkName}>
+          <Text style={{ fontSize: 24 }}>
+            {props.drinkObj.drinkname}
+          </Text>
+        </View>
+        <View>
+          <Image style={{
+            alignSelf: 'center',
+            height: 300,
+            width: 300,
+            borderWidth: 1,
+            borderRadius: 150,
+            margin: 10
+          }} source={{ uri: props.drinkObj.pic }} resizeMode="stretch" />
+        </View>
+        <SafeAreaView style={styles.textContainer}>
+          <Text style={{ fontSize: 16 }}>
+            {props.drinkObj.instructions}
+          </Text>
 
+        </SafeAreaView>
+      </View>
     </View>
   )
+
 }
-export default MyDrinks;
+export default DrinkEntrie;

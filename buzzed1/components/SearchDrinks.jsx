@@ -77,8 +77,9 @@ var SearchDrinks = (props) => {
       </SafeAreaView>
       <SafeAreaView>
         <ScrollView >
-        {arrayDrinks.map(drink => {
-          return <SearchedDrinks drinkObj={drink}/>
+        {arrayDrinks.map((drink, idx) => {
+          console.log(drink)
+          return <SearchedDrinks drinkObj={drink} key={idx}/>
         })}
         </ScrollView>
       </SafeAreaView>

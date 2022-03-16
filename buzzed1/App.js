@@ -7,13 +7,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './components/HomeScreen.jsx';
 import axios from 'axios';
 import SearchDrinks from './components/SearchDrinks.jsx'
+import MyDrinks from './components/MyDrinks.jsx'
 var iconHeight = 40;
 var iconWidth = 40;
 
 
 
 export default function App() {
-  var [screenText, setScreenText] = useState('Home')
+  var [screenText, setScreenText] = useState('Home');
 
   const changeText = (text) => {
     setScreenText(text)
@@ -31,7 +32,7 @@ export default function App() {
         </View>
         <View style={styles.NavContainer}>
           <View style={styles.NavBar}>
-            <Pressable onPress={() => changeText('My Drinks')} style={styles.IconBehave}>
+            <Pressable onPress={() => changeText('MyDrinks')} style={styles.IconBehave}>
               <Icon name="margarita-glass-drink" group="lodgicons" height={iconHeight} width={iconWidth} color={'white'}/>
             </Pressable>
             <Pressable onPress={() => changeText('Home')} style={styles.IconBehave}>
@@ -48,13 +49,13 @@ export default function App() {
     return(
     <View style={styles.container}>
     <Image source={require('./assets/buzzed-logos/buzzed-logos_transparent.png')} style={styles.logo}/>
-    <View style={styles.scrollContainer2}>
+    <View style={styles.scrollContainer}>
       <SearchDrinks />
       <StatusBar style="light" />
     </View>
     <View style={styles.NavContainer}>
       <View style={styles.NavBar}>
-        <Pressable onPress={() => changeText('My Drinks')} style={styles.IconBehave}>
+        <Pressable onPress={() => changeText('MyDrinks')} style={styles.IconBehave}>
           <Icon name="margarita-glass-drink" group="lodgicons" height={iconHeight} width={iconWidth} color={'white'}/>
         </Pressable>
         <Pressable onPress={() => changeText('Home')} style={styles.IconBehave}>
@@ -67,17 +68,17 @@ export default function App() {
     </View>
   </View>
     )
-  } else if (screenText === 'My Drinks') {
+  } else if (screenText === 'MyDrinks') {
     return (
     <View style={styles.container}>
     <Image source={require('./assets/buzzed-logos/buzzed-logos_transparent.png')} style={styles.logo}/>
-    <View>
-      <Text style={{fontSize:26, color: 'white'}}>{screenText}</Text>
+    <View styles={styles.scrollContainer2}>
+      <MyDrinks />
       <StatusBar style="light" />
     </View>
     <View style={styles.NavContainer}>
       <View style={styles.NavBar}>
-        <Pressable onPress={() => changeText('My Drinks')} style={styles.IconBehave}>
+        <Pressable onPress={() => changeText('MyDrinks')} style={styles.IconBehave}>
           <Icon name="margarita-glass-drink" group="lodgicons" height={iconHeight} width={iconWidth} color={'white'}/>
         </Pressable>
         <Pressable onPress={() => changeText('Home')} style={styles.IconBehave}>

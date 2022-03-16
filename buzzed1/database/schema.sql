@@ -1,0 +1,12 @@
+DROP DATABASE IF EXISTS drinks;
+
+CREATE DATABASE drinks;
+
+\c drinks;
+
+CREATE TABLE IF NOT EXISTS drinksTable (
+  id INT UNIQUE PRIMARY KEY,
+  drinkName VARCHAR NOT NULL,
+  pic TEXT NOT NULL,
+  instructions TEXT NOT NULL
+);
