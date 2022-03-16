@@ -48,10 +48,6 @@ var Home = () => {
     axios.get(`http://thecocktaildb.com/api/json/v2/9973533/popular.php`)
       .then(response => {
        var cutArray = response.data.drinks.slice(0, 10)
-        // var newObj = {
-        //   name: response.data.drinks[0].strDrink,
-        //   pic: response.data.drinks[0].strDrinkThumb,
-        // }
         setDrinks(cutArray)
       })
       .catch(err => {
@@ -59,31 +55,10 @@ var Home = () => {
       })
   }
   return (
-//     <View>
-//       <ScrollView>
-
-//     <View style={styles.drinkName}>
-//     <Text style={{fontSize: 24}}>
-//       {drinks.name}
-//     </Text>
-//       </View>
-//     <View>
-//     <Image style={{
-
-//       alignSelf: 'center',
-//       height: 300,
-//       width: 300,
-//       borderWidth: 1,
-//       borderRadius: 150,
-//       margin: 10
-// }} source={{uri: drinks.pic}} resizeMode="stretch"/>
-//     </View>
-//       </ScrollView>
-//   </View>
     <SafeAreaView >
       <ScrollView >
-        {drinks.map(drink => {
-          return <DrinkList drink={drink}/>
+        {drinks.map((drink, idx) => {
+          return <DrinkList drink={drink} key={idx}/>
         })}
       </ScrollView>
     </SafeAreaView>

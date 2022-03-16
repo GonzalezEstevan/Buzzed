@@ -55,7 +55,6 @@ var DrinksList = (props) => {
         </View>
       <View>
       <Image style={{
-
         alignSelf: 'center',
         height: 300,
         width: 300,

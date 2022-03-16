@@ -28,30 +28,35 @@ const styles = StyleSheet.create({
     margin: 20,
     borderWidth: 1,
     padding: 10,
-    width: 300,
+    width: 325,
     bottom: 2,
     backgroundColor: 'white',
-    fontSize: 17
+    fontSize: 17,
   },
 });
 
 var SearchDrinks = (props) => {
   const [search, setSearch] = useState('');
   const [arrayDrinks, setArrayDrinks] = useState([]);
+  const [err, setErr] = useState(false);
 
-  // useEffect( async () => {
-  //    await searchApi(search)
-  // }, [search])
+  useEffect(() => {
+    if (err === undefined) {
+      setErr(true)
+    }
+  }, [err])
 
   var searchApi = async (ingredients) => {
     ingredients = ingredients.toString().toLowerCase();
     await axios.get(`http://thecocktaildb.com/api/json/v2/9973533/filter.php?i=${ingredients}`)
       .then(response => {
-        var drinkArr = response.data.drinks.slice(0, 5)
+        var drinkArr = response.data.drinks.slice(0, 10)
         setArrayDrinks(drinkArr)
       })
+      //FIX ERROR HANDLEING
       .catch(err => {
-        console.error(err.message)
+        setErr(true)
+        console.error('error YEET')
       })
   }
   var updateSearch = (text) => {
@@ -62,6 +67,7 @@ var SearchDrinks = (props) => {
     <View style={styles.container}>
     <SafeAreaView>
       <SafeAreaView style={styles.container}>
+        {console.log('ERROR',err)}
       <TextInput
         style={styles.input2}
         placeholder="Search by Ingredients"
