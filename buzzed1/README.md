@@ -36,8 +36,8 @@ npm run serverStart
 
 # App Examples
 ## Screenshot
- ![Homescreen](/assets/screenshots/Homescreen.png)
+ ![Homescreen](/buzzed1/assets/screenshots/Homescreen.png)
 
 ## Gif
 
- ![Buzzed](/assets/screenshots/2ndBuzzedGif.gif)
+ ![Buzzed](/buzzed1/assets/screenshots/2ndBuzzedGif.gif)
