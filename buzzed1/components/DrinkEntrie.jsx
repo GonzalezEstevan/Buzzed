@@ -66,6 +66,15 @@ const styles = StyleSheet.create({
 
 var DrinkEntrie = (props) => {
 
+  var deleteDrinks =  (data) => {
+      axios.put('http://localhost:3000/db/myDrinks', data)
+        .then( async response => {
+          console.log('Deleted')
+        })
+        .catch(err => {
+          console.error(err.message, 'ERROR')
+        })
+  }
 
   return (
     <View style={styles.container}>
@@ -89,11 +98,33 @@ var DrinkEntrie = (props) => {
           <Text style={{ fontSize: 16 }}>
             {props.drinkObj.instructions}
           </Text>
-
+          <Pressable style={styles.IconBehave} onPress={() =>
+          {deleteDrinks({
+            id: props.drinkObj.id,
+            name: props.drinkObj.drinkName,
+            pic: props.drinkObj.pic,
+            instructions: props.drinkObj.instructions,
+          }
+          )}}
+          style={({ pressed }) => [
+          {
+            backgroundColor: pressed
+              ? 'rgb(210, 230, 255)'
+              : 'white'
+          },
+          styles.wrapperCustom
+        ]}>
+          {({ pressed }) => (
+          <Text style={{fontSize: 20}}>
+            {pressed ? 'Deleted!' : (
+              <Icon name="round-delete-button" group="material-design" height={iconHeight} width={iconWidth} color={'black'} />
+            )}
+          </Text>
+        )}
+      </Pressable>
         </SafeAreaView>
       </View>
     </View>
   )
-
 }
 export default DrinkEntrie;

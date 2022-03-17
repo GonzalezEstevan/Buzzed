@@ -6,6 +6,6 @@ router.route('/myDrinks')
 
   .post(controller.postDrinks)
 
-
+  .put(controller.deleteDrink)
 
 module.exports = router;
