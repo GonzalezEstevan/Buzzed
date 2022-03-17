@@ -84,7 +84,7 @@ var getDrinks = () => {
 
   return(
     <View style={styles.container}>
-      <Text style={{fontSize: 32}}>My Drinks</Text>
+      <Text style={{fontSize: 32, color: 'white', alignItems: 'center', justifyContent: 'center'}}>My Drinks</Text>
       <SafeAreaView>
         <ScrollView >
         {myDrinks.map((drink, idx) => {

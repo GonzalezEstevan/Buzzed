@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     position: 'relative',
-    width: '100%',
+    width: 'auto',
     backgroundColor: '#C8E7F5',
     borderRadius: 10,
     shadowColor: "#000",
@@ -166,7 +166,7 @@ var SearchedDrinks = (props) => {
       <SafeAreaView style={styles.textContainer}>
       </SafeAreaView>
       <SafeAreaView style={styles.textContainer}>
-      <Text style={{fontSize: 16}}>
+      <Text style={{fontSize: 18}}>
         {clickedDrink.instructions}
       </Text>
       </SafeAreaView>

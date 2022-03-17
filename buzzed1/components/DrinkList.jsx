@@ -97,7 +97,7 @@ var DrinksList = (props) => {
           }} source={{ uri: props.drink.strDrinkThumb }} resizeMode="stretch" />
         </View>
         <SafeAreaView style={styles.textContainer}>
-          <Text style={{ fontSize: 16 }}>
+          <Text style={{ fontSize: 19 }}>
             {props.drink.strInstructions}
           </Text>
           <Pressable style={styles.IconBehave} onPress={() =>

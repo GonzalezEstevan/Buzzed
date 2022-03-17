@@ -73,7 +73,7 @@ var SearchDrinks = (props) => {
         onSubmitEditing={(text) => (searchApi(search))}
       />
       </SafeAreaView>
-      <SafeAreaView >
+      <SafeAreaView>
         <ScrollView style={{top:50}}>
         {arrayDrinks.map((drink, idx) => {
           console.log(drink)

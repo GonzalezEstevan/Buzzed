@@ -49,7 +49,7 @@ export default function App() {
     return(
     <View style={styles.container}>
     <Image source={require('./assets/buzzed-logos/buzzed-logos_transparent.png')} style={styles.logo}/>
-    <View style={styles.scrollContainer}>
+    <View style={styles.scrollContainer2}>
       <SearchDrinks />
       <StatusBar style="light" />
     </View>
@@ -98,7 +98,7 @@ const deviceWidth = Math.round(Dimensions.get('window')).width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#3962ff',
+    backgroundColor: '#414a4c',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -109,10 +109,11 @@ const styles = StyleSheet.create({
   },
   NavBar: {
     flexDirection: 'row',
-    backgroundColor: 'black',
+    backgroundColor: '#414a4c',
     width: '100%',
     justifyContent: 'space-evenly',
-    borderRadius: 35,
+    borderRadius: 20,
+
   },
   IconBehave: {
     padding: 14
@@ -147,8 +148,8 @@ const styles = StyleSheet.create({
     },
   },
   scrollContainer2: {
-    paddingBottom: 200,
-    top:200,
+    paddingBottom: 280,
+    top:150,
     shadowOffset: {
       width: 0,
       height: 8,
