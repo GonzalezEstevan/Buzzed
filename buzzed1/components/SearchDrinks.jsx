@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     width: 325,
-    bottom: 2,
     backgroundColor: 'white',
     fontSize: 17,
   },
+
 });
 
 var SearchDrinks = (props) => {
@@ -75,8 +75,8 @@ var SearchDrinks = (props) => {
         onSubmitEditing={(text) => (searchApi(search))}
       />
       </SafeAreaView>
-      <SafeAreaView>
-        <ScrollView >
+      <SafeAreaView >
+        <ScrollView style={{top:50}}>
         {arrayDrinks.map((drink, idx) => {
           console.log(drink)
           return <SearchedDrinks drinkObj={drink} key={idx}/>
