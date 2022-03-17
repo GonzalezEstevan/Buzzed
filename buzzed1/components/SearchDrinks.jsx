@@ -40,11 +40,9 @@ var SearchDrinks = (props) => {
   const [arrayDrinks, setArrayDrinks] = useState([]);
   const [err, setErr] = useState(false);
 
-  useEffect(() => {
-    if (err === undefined) {
-      setErr(true)
-    }
-  }, [err])
+  // useEffect(() => {
+  //   searchApi()
+  // }, [])
 
   var searchApi = async (ingredients) => {
     ingredients = ingredients.toString().toLowerCase();
@@ -55,8 +53,8 @@ var SearchDrinks = (props) => {
       })
       //FIX ERROR HANDLEING
       .catch(err => {
+        alert('Not an ingredient')
         setErr(true)
-        console.error('error YEET')
       })
   }
   var updateSearch = (text) => {
