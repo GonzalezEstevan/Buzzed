@@ -7,7 +7,6 @@ Buzzed does all the work for you all you need to provide is the ingridients you 
 
 ## Features
 * [Instllation](#installation)
-* [Data Shape](#overview-of-data-shape)
 
 
 ## Installation
